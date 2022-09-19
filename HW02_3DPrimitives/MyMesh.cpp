@@ -61,7 +61,21 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	// To make the matrix4 translate
+
+	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
+	// Get all the points using BTX Generate into a vector<vector3>
+	std::vector<vector3> vertexVector = BTXs::GenerateCone(a_fRadius, a_fHeight, a_nSubdivisions);
+	// For loop to apply translation to all the points
+	for (uint i = 0; i < vertexVector.size(); i++)
+	{
+		vertexVector[i] = m4_Translation * vector4(vertexVector[i], 1.0f);
+	}
+	// for loop to make the faces
+	for (uint i = 0; i < vertexVector.size(); i += 3)
+	{
+		AddTri(vertexVector[i], vertexVector[i + 1], vertexVector[i + 2]);
+	}
 	// -------------------------------
 
 	// Adding information about color
@@ -85,7 +99,19 @@ void MyMesh::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisi
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
+	// Get all the points using BTX Generate into a vector<vector3>
+	std::vector<vector3> vertexVector = BTXs::GenerateCylinder(a_fRadius, a_fHeight, a_nSubdivisions);
+	// For loop to apply translation to all the points
+	for (uint i = 0; i < vertexVector.size(); i++)
+	{
+		vertexVector[i] = m4_Translation * vector4(vertexVector[i], 1.0f);
+	}
+	// for loop to make the faces
+	for (uint i = 0; i < vertexVector.size(); i += 3)
+	{
+		AddTri(vertexVector[i], vertexVector[i + 1], vertexVector[i + 2]);
+	}
 	// -------------------------------
 
 	// Adding information about color
@@ -115,7 +141,19 @@ void MyMesh::GenerateTube(float a_fOuterRadius, float a_fInnerRadius, float a_fH
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
+	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
+	// Get all the points using BTX Generate into a vector<vector3>
+	std::vector<vector3> vertexVector = BTXs::GenerateTube(a_fOuterRadius, a_fInnerRadius, a_fHeight, a_nSubdivisions);
+	// For loop to apply translation to all the points
+	for (uint i = 0; i < vertexVector.size(); i++)
+	{
+		vertexVector[i] = m4_Translation * vector4(vertexVector[i], 1.0f);
+	}
+	// for loop to make the faces
+	for (uint i = 0; i < vertexVector.size(); i += 3)
+	{
+		AddTri(vertexVector[i], vertexVector[i + 1], vertexVector[i + 2]);
+	}
 	// -------------------------------
 
 	// Adding information about color
@@ -147,7 +185,19 @@ void MyMesh::GenerateTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSu
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
+	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
+	// Get all the points using BTX Generate into a vector<vector3>
+	std::vector<vector3> vertexVector = BTXs::GenerateTorus(a_fOuterRadius, a_fInnerRadius, a_nSubdivisionsA, a_nSubdivisionsB);
+	// For loop to apply translation to all the points
+	for (uint i = 0; i < vertexVector.size(); i++)
+	{
+		vertexVector[i] = m4_Translation * vector4(vertexVector[i], 1.0f);
+	}
+	// for loop to make the faces
+	for (uint i = 0; i < vertexVector.size(); i += 3)
+	{
+		AddTri(vertexVector[i], vertexVector[i + 1], vertexVector[i + 2]);
+	}
 	// -------------------------------
 
 	// Adding information about color
@@ -172,7 +222,19 @@ void MyMesh::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a_v3Co
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
+	// Get all the points using BTX Generate into a vector<vector3>
+	std::vector<vector3> vertexVector = BTXs::GenerateSphere(a_fRadius, a_nSubdivisions);
+	// For loop to apply translation to all the points
+	for (uint i = 0; i < vertexVector.size(); i++)
+	{
+		vertexVector[i] = m4_Translation * vector4(vertexVector[i], 1.0f);
+	}
+	// for loop to make the faces
+	for (uint i = 0; i < vertexVector.size(); i += 3)
+	{
+		AddTri(vertexVector[i], vertexVector[i + 1], vertexVector[i + 2]);
+	}
 	// -------------------------------
 
 	// Adding information about color
