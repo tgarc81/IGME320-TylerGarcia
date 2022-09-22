@@ -61,8 +61,8 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Init();
 
 	// Replace this with your code
+	
 	// To make the matrix4 translate
-
 	matrix4 m4_Translation = glm::translate(IDENTITY_M4, vector3(0.0f, 0.0f, 0.0f));
 	// Get all the points using BTX Generate into a vector<vector3>
 	std::vector<vector3> vertexVector = BTXs::GenerateCone(a_fRadius, a_fHeight, a_nSubdivisions);
