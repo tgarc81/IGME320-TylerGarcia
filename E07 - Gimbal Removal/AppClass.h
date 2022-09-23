@@ -18,12 +18,12 @@ using namespace BTX;
 
 class Application
 {
-	matrix4 m_m4Model = IDENTITY_M4;
-	quaternion m_qOrientation;
+	matrix4 m_m4Model;
+	quaternion m_qOrientation; // orientation for steve in quaternion
 	vector3 m_v3Rotation;
 	String m_sSteve = "Minecraft\\Steve.obj";
 private:
-	String m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu";
+	String m_sProgrammer = "Tyler Garcia - tmg7946@rit.edu";
 	static ImGuiObject gui; //GUI object
 
 	uint m_uRenderCallCount = 0; //count of render calls per frame

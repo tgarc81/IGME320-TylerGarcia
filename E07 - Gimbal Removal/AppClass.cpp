@@ -23,6 +23,18 @@ void Application::Update(void)
 	//Update Entity Manager
 	m_pEntityMngr->Update();
 
+	// Updates the matrix4 orientation for EACH axis
+	matrix4 m4OrientationX = glm::rotate(IDENTITY_M4, glm::radians(m_v3Rotation.x), vector3(1.0f, 0.0f, 0.0f));
+	matrix4 m4OrientationY = glm::rotate(IDENTITY_M4, glm::radians(m_v3Rotation.y), vector3(0.0f, 1.0f, 0.0f));
+	matrix4 m4OrientationZ = glm::rotate(IDENTITY_M4, glm::radians(m_v3Rotation.z), vector3(0.0f, 0.0f, 1.0f));
+
+	// Gets the total orientation by concatenating the matrix4 orientation of each axis
+	matrix4 m4Orientation = m4OrientationX * m4OrientationY * m4OrientationZ;
+	
+	// Applies the matrix4 orientation to the matrix4 of the actual model
+	m_m4Model = glm::toMat4(m_qOrientation);
+
+
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 }
@@ -34,9 +46,6 @@ void Application::Display(void)
 	matrix4 m4View = m_pCameraMngr->GetViewMatrix();
 	matrix4 m4Projection = m_pCameraMngr->GetProjectionMatrix();
 
-	m_m4Model = glm::rotate(IDENTITY_M4, glm::radians(m_v3Rotation.x), vector3(1.0f, 0.0f, 0.0f));
-	m_m4Model = glm::rotate(m_m4Model, glm::radians(m_v3Rotation.y), vector3(0.0f, 1.0f, 0.0f));
-	m_m4Model = glm::rotate(m_m4Model, glm::radians(m_v3Rotation.z), vector3(0.0f, 0.0f, 1.0f));
 	/*
 	* The following line was replaced by the model manager so we can see a model instead of a cone
 	*/
