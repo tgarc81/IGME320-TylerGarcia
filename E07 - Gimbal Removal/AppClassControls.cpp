@@ -63,6 +63,7 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 		m_bModifier = false;
 		break;
 	case sf::Keyboard::R:
+		// Resets orientation in terms of vectors and quaternions
 		m_v3Rotation = vector3(0.0f);
 		m_qOrientation = quaternion();
 		break;
