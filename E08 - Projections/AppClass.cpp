@@ -2,7 +2,7 @@
 void Application::InitVariables(void)
 {
 	////Change this to your name and email
-	m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu";
+	m_sProgrammer = "Tyler Garcia - tmg7946@rit.edu";
 	vector3 v3Position(0.0f, 0.0f, 10.0f);
 	vector3 v3Target = ZERO_V3;
 	vector3 v3Upward = AXIS_Y;
@@ -23,7 +23,7 @@ void Application::InitVariables(void)
 	m_pCamera = new MyCamera();
 
 	//projection used
-	m_uProjection = 1;
+	m_uProjection = 7;
 }
 void Application::Update(void)
 {
@@ -42,6 +42,8 @@ void Application::Update(void)
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 }
+
+
 void Application::Display(void)
 {
 	// Clear the screen
@@ -54,26 +56,36 @@ void Application::Display(void)
 	switch (m_uProjection)
 	{
 	default:
+	// Has a scene and for each scene it adjusts the camera position and properties appropiately
 	case 1:
 		m_pCamera->ResetCamera();
 		break;
 	case 2:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetPerspective(false);
 		break;
 	case 3:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetPosition(vector3(AXIS_X * 28.0f));
+		m_pCamera->SetUp(vector3(AXIS_Z * -1.0f));
 		break;
 	case 4:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetPosition(vector3(0.0f, 0.0f, -15.0f));
 		break;
 	case 5:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetPosition(vector3(AXIS_Z * -15.0f));
+		m_pCamera->SetNearFar(vector2(5.0f, 750.0f));
 		break;
 	case 6:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetPosition(vector3(AXIS_Z * -15.0f));
+		m_pCamera->SetNearFar(vector2(0.01f, 10.0f));
 		break;
 	case 7:
 		m_pCamera->ResetCamera();
+		m_pCamera->SetUp(vector3(0.0f, -5.0f, 0.0f));
 		break;
 	}
 

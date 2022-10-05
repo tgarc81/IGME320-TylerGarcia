@@ -23,7 +23,7 @@ void Application::InitVariables(void)
 	m_pCamera = new MyCamera();
 
 	//projection used
-	m_uProjection = 1;
+	m_uProjection = 4;
 }
 void Application::Update(void)
 {
