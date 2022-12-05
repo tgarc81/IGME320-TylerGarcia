@@ -51,8 +51,6 @@ Octant::Octant(uint a_nMaxLevel, uint a_nIdealEntityCount)
 
 bool Octant::IsColliding(uint a_uRBIndex)
 {
-
-
 	//Get how many objects there are in the world
 	//If the index given is larger than the number of elements in the bounding object there is no collision
 	if (a_uRBIndex > m_pEntityMngr->GetEntityCount()) {
